@@ -16,4 +16,4 @@ Este proyecto implementa un sistema para gestionar empleados, incluyendo la docu
 ## Visualización de Ramas y Commits
 A continuación, se muestra una captura de pantalla de la estructura de ramas y commits del proyecto.
 
-![Vista de ramas y commits](Captura.png)
+![Vista de ramas y commits](/Captura.PNG)
