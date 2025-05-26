@@ -1,39 +1,32 @@
 import java.util.Scanner;
 
 public class SistemaGestionEmpleados {
-
-    private Empleado[] empleados;
-
-    public SistemaGestionEmpleados(Empleado[] empleados) {
-        this.empleados = empleados;
-    }
-
-    public void aumentarSalario(double porcentaje) {
-        for (Empleado empleado : empleados) {
-            double nuevoSalario = empleado.getSalario() * (1 + porcentaje / 100);
-            empleado.setSalario(nuevoSalario);
-        }
-    }
-
     public static void main(String[] args) {
-        
-        Empleado[] empleados = new Empleado[3];
-        empleados[0] = new Empleado("Juan", "Desarrollador", 50000);
-        empleados[1] = new Empleado("María", "Diseñadora", 45000);
-        empleados[2] = new Empleado("Pedro", "Gerente", 60000);
+ 
+         System.out.println(Mensajes.BIENVENIDA);
 
-        SistemaGestionEmpleados sistema = new SistemaGestionEmpleados(empleados);
+        Empleados empleados = new Empleados(3);
 
+        // Dar de alta empleados
+        empleados.darAltaEmpleado(new Empleado("Juan", "Desarrollador", 50000));
+        empleados.darAltaEmpleado(new Empleado("María", "Diseñadora", 45000));
+        empleados.darAltaEmpleado(new Empleado("Pedro", "Gerente", 60000));
+
+        // Mostrar lista inicial
+        System.out.println(Mensajes.LISTA_INICIAL);
+        empleados.mostrarListado();
+
+        // Solicitar aumento de salario
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Introduzca el porcentaje de aumento de salario: ");
+        System.out.print(Mensajes.INTRODUCIR_PORCENTAJE);
         double porcentaje = scanner.nextDouble();
 
-        sistema.aumentarSalario(porcentaje);
-        
-        System.out.println("Lista de Empleados:");
-        for (Empleado empleado : empleados) {
-            System.out.println(empleado);
-        }
+        // Aplicar aumento
+        empleados.aumentarSalario(porcentaje);
+
+        // Mostrar lista actualizada
+        System.out.println("\n" + Mensajes.LISTA_ACTUALIZADA);
+        empleados.mostrarListado();
 
         scanner.close();
     }
